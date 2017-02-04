@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-server = MongoClient(<IP>)
+server = MongoClient(149.89.150.100)
 db = server.mydb
 
 #---------------------------------------------------------
