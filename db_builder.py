@@ -17,7 +17,7 @@ coursesDict = dictObject("courses.csv")
 
 entry = db.students
 for student in studentDict:
-    print student
+    #print student
     d = { "name":student['name'], "id":student['id'], "age":student['age'] }
     for course in coursesDict:
         if course['id'] == student['id']:
