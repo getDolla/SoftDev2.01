@@ -20,7 +20,9 @@ for student in studentDict:
     #print student
     d = { "name":student['name'], "id":student['id'], "age":student['age'] }
     for course in coursesDict:
+        #print course
         if course['id'] == student['id']:
             d[course['code']] = course['mark']
+    #print d
     entry.insert_one( d )
 
