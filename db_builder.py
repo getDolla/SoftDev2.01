@@ -15,13 +15,12 @@ def dictObject(filename):
 studentDict = dictObject("peeps.csv")
 coursesDict = dictObject("courses.csv")
 
-student = db.students
-for entry in studentDict:
-    #print entry
-    student.insert_one( entry )
-
-courses = db.courses
-for entry in coursesDict:
-    #print entry
-    courses.insert_one( entry )
+entry = db.students
+for student in studentDict:
+    print student
+    d = { "name":student['name'], "id":student['id'], "age":student['age'] }
+    for course in coursesDict:
+        if course['id'] == student['id']:
+            d[course['code']] = course['mark']
+    entry.insert_one( d )
 
