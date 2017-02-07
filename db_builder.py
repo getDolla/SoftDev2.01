@@ -18,11 +18,11 @@ coursesDict = dictObject("courses.csv")
 entry = db.students
 for student in studentDict:
     #print student
-    d = { "name":student['name'], "id":student['id'], "age":student['age'] }
+    d = { "name":student['name'], "id":student['id'], "age":student['age'], "classes":[] }
     for course in coursesDict:
         #print course
         if course['id'] == student['id']:
-            d[course['code']] = course['mark']
+            d["classes"].append( { 'code': course["code"], 'mark': int(course["mark"]) } )            
     #print d
     entry.insert_one( d )
 
