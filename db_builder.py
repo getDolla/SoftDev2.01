@@ -12,8 +12,8 @@ def dictObject(filename):
     return d
 #---------------------------------------------------------
 
-studentDict = dictObject("peeps.csv")
-coursesDict = dictObject("courses.csv")
+studentDict = [row for row in dictObject("peeps.csv")]
+coursesDict = [row for row in dictObject("courses.csv")]
 
 entry = db.students
 for student in studentDict:
@@ -23,6 +23,6 @@ for student in studentDict:
         #print course
         if course['id'] == student['id']:
             d["classes"].append( { 'code': course["code"], 'mark': int(course["mark"]) } )            
-    #print d
+    print d
     entry.insert_one( d )
-
+    print student

@@ -9,11 +9,11 @@ db = server.dbYP
 def calcavg(d):
     total = 0.0
     for gradeDict in d['classes']:
-        total += gradeDict['code']
+        total += gradeDict['mark']
     return total/len(d['classes'])
 #---------------------------------------------------------
 
-for entry in db.students:
+for entry in db.students.find():
     print calcavg(entry)
 
 #---------------------------------------------------------
@@ -26,16 +26,15 @@ def dictObject(filename):
 
 teacherDict = dictObject("teachers.csv")
 
-
-
 entry = db.teachers
 for teacher in teacherDict:
     #print teacher
     d = { "code":teacher['code'], "teacher":teacher['teacher'], "period":teacher['period'], "students":[] }
-    for student in db.students:
+    for student in db.students.find():
         #print student
-        if student['code'] == teacher['code']:
-            d["students"].append( { 'name': student["code"], 'id': student["id"] } )            
+        for student_classes in student['classes']:
+            if student_classes['code'] == teacher['code']:
+                d["students"].append( { 'name': student["name"], 'id': student["id"] } )            
     #print d
     entry.insert_one( d )
 
