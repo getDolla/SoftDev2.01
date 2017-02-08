@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import csv       # facilitates CSV I/O
 
 server = MongoClient("149.89.150.100")
-db = server.mydb
+db = server.dbYP
 
 #---------------------------------------------------------
 # returns a dictObject containing the parsed csv
