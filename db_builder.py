@@ -23,6 +23,6 @@ for student in studentDict:
         #print course
         if course['id'] == student['id']:
             d["classes"].append( { 'code': course["code"], 'mark': int(course["mark"]) } )            
-    print d
+    #print d
     entry.insert_one( d )
-    print student
+    #print student
